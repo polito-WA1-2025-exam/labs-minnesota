@@ -13,6 +13,7 @@
     - player ID (unique, is his actual name)
     - leagues (array of strings)
     - teams (array of strings)
+    - position (string, it can be only GK/DEF/MID/ATT)
     - nationality (string)
     - age (int)
     - active career (boolean)
