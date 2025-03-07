@@ -5,7 +5,7 @@
 - s123456 LASTNAME FIRSTNAME
 - s123456 LASTNAME FIRSTNAME
 
-# Exercise "NAME OF EXERCISE"
+# Exercise "GUESS WHO"
 
 # Lab Journal
 
