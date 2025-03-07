@@ -2,8 +2,9 @@
 
 ## Members
 - s334062 Merelli Leonardo
-- s123456 LASTNAME FIRSTNAME
-- s123456 LASTNAME FIRSTNAME
+- s322215 Pangrazi Federico
+- s332085 Stinà Giovanni
+- s328202 Pisanu Riccardo
 
 # Exercise "GUESS WHO"
 
