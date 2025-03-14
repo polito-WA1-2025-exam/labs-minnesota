@@ -1,4 +1,4 @@
-# Group "GROUP NAME"
+# Group "MINNESOTA"
 
 ## Members
 - s334062 Merelli Leonardo
