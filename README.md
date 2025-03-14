@@ -20,3 +20,6 @@
     - foot (string)
 
 (you may update this file to keep track of the progress of your group work, throughout the weeks)
+
+
+- Lab_02(14/03/2025): we added the needed methods to the collection and we created our SQLite database
