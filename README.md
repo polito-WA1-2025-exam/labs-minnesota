@@ -19,7 +19,5 @@
     - active career (boolean)
     - foot (string)
 
-(you may update this file to keep track of the progress of your group work, throughout the weeks)
 
-
-- Lab_02(14/03/2025): we added the needed methods to the collection and we created our SQLite database with the 5 samples, next step is the exercise 2 of the lab, so create methods to retrieve data from the database using Promises
+- Lab_02(14/03/2025): we added the methods for adding a new player and for retrieving players(filtering in functional programming) starting from a certain attribute value to the collection and we created our SQLite database with the 5 samples, next step is the exercise 2 of the lab, so create methods to retrieve data from the database using Promises
