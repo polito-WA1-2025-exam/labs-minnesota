@@ -12,13 +12,13 @@ function Footballer(name, age, leagues, teams, nationality, position, career, fo
     
 }
 
-const ronaldo = new Footballer("Cristiano Ronaldo", 40, ["Liga Portugal","Premier League","La Liga", "Serie A","Saudi Pro League"], ["Sporting Lisbona", "Manchester United","Real Madrid","Juventus", "Al-Nassr"], "Portugal", "ATT", 1 , "right")
-const messi = new Footballer("Lionel Messi", 37, ["La Liga","Ligue 1","MLS"], ["Barcelona", "Paris Saint-Germain","Inter Miami"], "Argentina", "ATT", 1 , "left")
-const maldini = new Footballer("Paolo Maldini", 57, ["Serie A"], ["AC Milan"], "Italy", "DEF", 0 , "right")
-const zidane = new Footballer("Zinedine Zidane", 53, ["Ligue 1","La Liga","Serie A"], ["Cannes", "Bordeaux", "Juventus", "Real Madrid"], "France", "MID", 0 , "right")
-const beckham = new Footballer("David Beckham", 50, ["Premier League","La Liga","Serie A","Ligue 1","MLS"], ["Manchester United", "Real Madrid","AC Milan","Paris Saint-Germain", "LA Galaxy"], "England", "MID", 0 , "right")
+// const ronaldo = new Footballer("Cristiano Ronaldo", 40, ["Liga Portugal","Premier League","La Liga", "Serie A","Saudi Pro League"], ["Sporting Lisbona", "Manchester United","Real Madrid","Juventus", "Al-Nassr"], "Portugal", "ATT", 1 , "right")
+// const messi = new Footballer("Lionel Messi", 37, ["La Liga","Ligue 1","MLS"], ["Barcelona", "Paris Saint-Germain","Inter Miami"], "Argentina", "ATT", 1 , "left")
+// const maldini = new Footballer("Paolo Maldini", 57, ["Serie A"], ["AC Milan"], "Italy", "DEF", 0 , "right")
+// const zidane = new Footballer("Zinedine Zidane", 53, ["Ligue 1","La Liga","Serie A"], ["Cannes", "Bordeaux", "Juventus", "Real Madrid"], "France", "MID", 0 , "right")
+// const beckham = new Footballer("David Beckham", 50, ["Premier League","La Liga","Serie A","Ligue 1","MLS"], ["Manchester United", "Real Madrid","AC Milan","Paris Saint-Germain", "LA Galaxy"], "England", "MID", 0 , "right")
 
-const db = new sqlite.Database('footballersDB.db', (err) => { if (err) throw err })
+const db = new sqlite.Database('footballersDBLite.sqlite', (err) => { if (err) throw err; else console.log('Connected to the database.') })
 
 function Container(){
 
@@ -64,15 +64,15 @@ function Container(){
     /////////////////////////             LAB 02              //////////////////////
 
     // NAME
-    this.findName = () => {
+    this.findName = (name) => {
             return new Promise((resolve, reject) => {
                 // query DB and return an array of all answers to this question
                 const sql =
                     `SELECT *
                     FROM footballers
-                    WHERE footballers.Name = ?`
+                    WHERE Name = ?`
     
-                db.all(sql, [this.name], (err, rows) => {
+                db.all(sql, [name], (err, rows) => {
                     if (err) {
                         reject(err)
                     } else {
@@ -87,15 +87,15 @@ function Container(){
         }
 
     // AGE
-    this.findAge = () => {
+    this.findAge = (age) => {
         return new Promise((resolve, reject) => {
             // query DB and return an array of all answers to this question
             const sql =
                 `SELECT *
                 FROM footballers 
-                WHERE footballers.Age = ?`
+                WHERE Age = ?`
 
-            db.all(sql, [this.age], (err, rows) => {
+            db.all(sql, [age], (err, rows) => {
                 if (err) {
                     reject(err)
                 } else {
@@ -110,17 +110,15 @@ function Container(){
     }
 
     // LEAGUES
-    this.findLeagues = () => {
+    this.findLeagues = (league) => {
         return new Promise((resolve, reject) => {
             // query DB and return an array of all footballers that played in this league
             const sql =
                 `SELECT *
                 FROM footballers 
-                WHERE footballers.Leagues LIKE ?`
+                WHERE EXISTS (SELECT 1 FROM json_each(Leagues) WHERE value = ?)`
 
-            const params = ['%"${league}"%'];
-
-            db.all(sql, params, (err, rows) => {
+            db.all(sql, league, (err, rows) => {
                 if (err) {
                     reject(err)
                 } else {
@@ -135,17 +133,15 @@ function Container(){
     }
 
     // TEAMS
-    this.findTeams = () => {
+    this.findTeams = (team) => {
         return new Promise((resolve, reject) => {
             // query DB and return an array of all footballers that played for this team
             const sql =
                 `SELECT *
                 FROM footballers 
-                WHERE footballers.Teams LIKE ?`
-
-            const params = ['%"${team}"%'];
+                WHERE EXISTS (SELECT 1 FROM json_each(Teams) WHERE value = ?)`
             
-            db.all(sql, params, (err, rows) => {
+            db.all(sql, team, (err, rows) => {
                 if (err) {
                     reject(err)
                 } else {
@@ -160,15 +156,15 @@ function Container(){
     }
 
     // NATIONALITY
-    this.findNationality = () => {
+    this.findNationality = (nationality) => {
         return new Promise((resolve, reject) => {
             // query DB and return an array of all answers to this question
             const sql =
                 `SELECT *
                 FROM footballers
-                WHERE footballers.Nationality = ?`
+                WHERE Nationality = ?`
 
-            db.all(sql, [this.nationality], (err, rows) => {
+            db.all(sql, [nationality], (err, rows) => {
                 if (err) {
                     reject(err)
                 } else {
@@ -183,15 +179,15 @@ function Container(){
     }
 
     // POSITION
-    this.findPosition = () => {
+    this.findPosition = (position) => {
         return new Promise((resolve, reject) => {
             // query DB and return an array of all answers to this question
             const sql =
                 `SELECT *
                 FROM footballers
-                WHERE footballers.Position = ?`
+                WHERE Position = ?`
 
-            db.all(sql, [this.position], (err, rows) => {
+            db.all(sql, [position], (err, rows) => {
                 if (err) {
                     reject(err)
                 } else {
@@ -206,15 +202,15 @@ function Container(){
     }
 
     // CAREER   
-    this.findCareer = () => {
+    this.findCareer = (career) => {
         return new Promise((resolve, reject) => {
             // query DB and return an array of all answers to this question
             const sql =
                 `SELECT *
                 FROM footballers
-                WHERE footballers.Career = ?`
+                WHERE Career = ?`
 
-            db.all(sql, [this.career], (err, rows) => {
+            db.all(sql, [career], (err, rows) => {
                 if (err) {
                     reject(err)
                 } else {
@@ -229,15 +225,15 @@ function Container(){
     }
 
     // FOOT
-    this.findFoot = () => {
+    this.findFoot = (foot) => {
         return new Promise((resolve, reject) => {
             // query DB and return an array of all answers to this question
             const sql =
                 `SELECT *
                 FROM footballers
-                WHERE footballers.Foot = ?`
+                WHERE Foot = ?`
 
-            db.all(sql, [this.foot], (err, rows) => {
+            db.all(sql, [foot], (err, rows) => {
                 if (err) {
                     reject(err)
                 } else {
@@ -258,7 +254,7 @@ function Container(){
 // testing
 
 const cl = new Container()
-cl.findNationality("Argentina")
+cl.findTeams("AC Milan")
     .then((list) => { console.log('We have ', list.length, ' footballers') })
     .catch((err) => { console.log("ERROR: ", err) })
 
