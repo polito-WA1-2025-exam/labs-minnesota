@@ -21,4 +21,5 @@
 
 
 - Lab_02(14/03/2025): we added the methods for adding a new player and for retrieving players(filtering in functional programming) starting from a certain attribute value to the collection and we created our SQLite database with the 5 samples, next step is the exercise 2 of the lab, so create methods to retrieve data from the database using Promises.
+
 EDIT(20/03): exercise 2 done and tested, next step is exercise 3
