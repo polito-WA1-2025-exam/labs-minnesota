@@ -23,5 +23,6 @@
 - Lab_02(14/03/2025): we added the methods for adding a new player and for retrieving players(filtering in functional programming) starting from a certain attribute value to the collection and we created our SQLite database with the 5 samples, next step is the exercise 2 of the lab, so create methods to retrieve data from the database using Promises.
 
 EDIT(20/03): exercise 2 done and tested, next step is exercise 3
+
 EDIT(21/03): exercise 3 done, created copy of the database for the testing 
 - Lab_03(21/03/2025): created index file for the APIs, divided the file of the previous labs in two files: Models and Dao. Next step is to define the APIs needed
