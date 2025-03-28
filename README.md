@@ -30,6 +30,6 @@ EDIT(21/03): exercise 3 done, created copy of the database for the testing
     - GET /footballers : retrieve the list of all footballers, in order to build the initial table with all the elements, REQUEST : N/A, RESPONSE : list of the footballers
     - GET </footballers/properties/property>: retrieve the list of footballers that match a specific property, starting from the initial list got from the previous API, REQUEST : property, RESPONSE : list of matching footballers
     - GET </footballers/properties/:id>: retrieve the footballer with the unique id, REQUEST : id, RESPONSE: single element
-    - POST </footballers/create>: create a new footballer inserting all the properties neeeded except for the Id, REQUEST: object footballer with Name, Age, Nationality, Leagues, Teams, Position, Career and Foot, RESPONSE: new list of footballers(? or maybe message of completion/error)
+    - POST </footballers/create>: create a new footballer inserting all the properties neeeded except for the Id, REQUEST: object footballer with Name, Age, Nationality, Leagues, Teams, Position, Career and Foot, RESPONSE: status(200)
     - PUT </footballers/footballer/update>: update the properties of a footballer, REQUEST : properties to update as JSON object, RESPONSE : new list of footballers(? or maybe message of completion/error)
     - DELETE </footballers/footballer/delete>: delete a footballer from the databse, REQUEST : N/A, RESPONSE : google.protobuf.Empty** (? or maybe message of completion/error)
