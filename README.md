@@ -25,4 +25,7 @@
 EDIT(20/03): exercise 2 done and tested, next step is exercise 3
 
 EDIT(21/03): exercise 3 done, created copy of the database for the testing 
-- Lab_03(21/03/2025): created index file for the APIs, divided the file of the previous labs in two files: Models and Dao. Next step is to define the APIs needed
+- Lab_03(21/03/2025): created index file for the APIs, divided the file of the previous labs in two files: Models and Dao. Next step is to define the APIs needed:
+    - GET </footballers> : retrieve the list of all footballers, in order to build the initial table with all the elements, REQUEST : N/A, RESPONSE : list of the footballers
+    - GET </footballers/properties/property>: retrieve the list of footballers that match a specific property, starting from the initial list got from the previous API, REQUEST : property, RESPONSE : list of matching footballers
+    -       
