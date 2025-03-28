@@ -33,3 +33,5 @@ EDIT(21/03): exercise 3 done, created copy of the database for the testing
     - POST </footballers/create>: create a new footballer inserting all the properties neeeded except for the Id, REQUEST: object footballer with Name, Age, Nationality, Leagues, Teams, Position, Career and Foot, RESPONSE: status(200)
     - PUT </footballers/footballer/update>: update the properties of a footballer, REQUEST : properties to update as JSON object, RESPONSE : new list of footballers(? or maybe message of completion/error)
     - DELETE </footballers/footballer/delete>: delete a footballer from the databse, REQUEST : N/A, RESPONSE : google.protobuf.Empty** (? or maybe message of completion/error)
+
+  EDIT(28/03/2025): exercises 1-2 done, remaining exercise 3
