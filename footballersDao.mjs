@@ -1,8 +1,51 @@
 import sqlite from 'sqlite3'
 import { Footballer } from './footballers.mjs'
 
-// coonect to database
+// coonect to database --- REMEMBER TO USE THE COPY OF THE DATABASE
 const db = new sqlite.Database('footballersDBLiteCOPY.sqlite', (err) => { if (err) throw err; else console.log('Connected to the database.') })
+
+// return all objects
+export const findAll = () => {
+    return new Promise((resolve, reject) => {
+        // query DB and return an array of all answers to this question
+        const sql =
+            `SELECT *
+            FROM footballers`
+        db.all(sql, (err, rows) => {
+            if (err) {
+                reject(err)
+            } else {
+                const result = rows.map((item) => new Footballer(item.name, item.age, item.leagues,
+                    item.teams, item.nationality, item.position, item.career, item.foot))
+                
+                resolve(result)
+            }
+        })
+    })
+}
+
+// find by Id
+export const findId = (id) => {
+    return new Promise((resolve, reject) => {
+        // query DB and return an array of all answers to this question
+        const sql =
+            `SELECT *
+            FROM footballers
+            WHERE Id = ?`
+
+        db.all(sql, [id], (err, rows) => {
+            if (err) {
+                reject(err)
+            } else {
+                const result = rows.map((item) => new Footballer(item.name, item.age, item.leagues,
+                    item.teams, item.nationality, item.position, item.career, item.foot))
+
+                resolve(result)
+            }
+        })
+
+    })
+}
 
 // find by name
 export const findName = (name) => {
