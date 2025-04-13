@@ -35,3 +35,5 @@ EDIT(21/03): exercise 3 done, created copy of the database for the testing
     - DELETE </footballers/footballer/delete>: delete a footballer from the databse, REQUEST : N/A, RESPONSE : google.protobuf.Empty** (? or maybe message of completion/error)
 
   EDIT(28/03/2025): exercises 1-2 done, remaining exercise 3
+
+  EDIT(13/04/2025): i dont know how to write index and tests to retrieve footballers based on a specific property, the rest works
