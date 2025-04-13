@@ -1,8 +1,8 @@
 import sqlite from 'sqlite3'
-import { Footballer } from './footballers.mjs'
+import { Footballer } from './footballersModels.mjs'
 
 // coonect to database --- REMEMBER TO USE THE COPY OF THE DATABASE
-const db = new sqlite.Database('footballersDBLiteCOPY.sqlite', (err) => { if (err) throw err; else console.log('Connected to the database.') })
+const db = new sqlite.Database('footballersFINAL.sqlite', (err) => { if (err) throw err; else console.log('Connected to the database.') })
 
 // return all objects
 export const findAll = () => {
@@ -15,8 +15,8 @@ export const findAll = () => {
             if (err) {
                 reject(err)
             } else {
-                const result = rows.map((item) => new Footballer(item.name, item.age, item.leagues,
-                    item.teams, item.nationality, item.position, item.career, item.foot))
+                const result = rows.map((item) => new Footballer(item.Name, item.Age, item.Leagues,
+                    item.Teams, item.Nationality, item.Position, item.Career, item.Foot))
                 
                 resolve(result)
             }
@@ -33,12 +33,12 @@ export const findId = (id) => {
             FROM footballers
             WHERE Id = ?`
 
-        db.all(sql, [id], (err, rows) => {
+        db.get(sql, [id], (err, row) => {
             if (err) {
                 reject(err)
             } else {
-                const result = rows.map((item) => new Footballer(item.name, item.age, item.leagues,
-                    item.teams, item.nationality, item.position, item.career, item.foot))
+                const result = new Footballer(row.Name, row.Age, row.Leagues,
+                    row.Teams, row.Nationality, row.Position, row.Career, row.Foot)
 
                 resolve(result)
             }
@@ -60,8 +60,8 @@ export const findName = (name) => {
             if (err) {
                 reject(err)
             } else {
-                const result = rows.map((item) => new Footballer(item.name, item.age, item.leagues,
-                    item.teams, item.nationality, item.position, item.career, item.foot))
+                const result = rows.map((item) => new Footballer(item.Name, item.Age, item.Leagues,
+                    item.Teams, item.Nationality, item.Position, item.Career, item.Foot))
 
                 resolve(result)
             }
@@ -83,8 +83,8 @@ export const findAge = (age) => {
             if (err) {
                 reject(err)
             } else {
-                const result = rows.map((item) => new Footballer(item.name, item.age, item.leagues,
-                    item.teams, item.nationality, item.position, item.career, item.foot))
+                const result = rows.map((item) => new Footballer(item.Name, item.Age, item.Leagues,
+                    item.Teams, item.Nationality, item.Position, item.Career, item.Foot))
 
                 resolve(result)
             }
@@ -106,8 +106,8 @@ export const findLeagues = (league) => {
             if (err) {
                 reject(err)
             } else {
-                const result = rows.map((item) => new Footballer(item.name, item.age, item.leagues,
-                    item.teams, item.nationality, item.position, item.career, item.foot))
+                const result = rows.map((item) => new Footballer(item.Name, item.Age, item.Leagues,
+                    item.Teams, item.Nationality, item.Position, item.Career, item.Foot))
 
                 resolve(result)
             }
@@ -129,8 +129,8 @@ export const findTeams = (team) => {
             if (err) {
                 reject(err)
             } else {
-                const result = rows.map((item) => new Footballer(item.name, item.age, item.leagues,
-                    item.teams, item.nationality, item.position, item.career, item.foot))
+                const result = rows.map((item) => new Footballer(item.Name, item.Age, item.Leagues,
+                    item.Teams, item.Nationality, item.Position, item.Career, item.Foot))
 
                 resolve(result)
             }
@@ -152,8 +152,8 @@ export const findNationality = (nationality) => {
             if (err) {
                 reject(err)
             } else {
-                const result = rows.map((item) => new Footballer(item.name, item.age, item.leagues,
-                    item.teams, item.nationality, item.position, item.career, item.foot))
+                const result = rows.map((item) => new Footballer(item.Name, item.Age, item.Leagues,
+                    item.Teams, item.Nationality, item.Position, item.Career, item.Foot))
 
                 resolve(result)
             }
@@ -175,8 +175,8 @@ export const findPosition = (position) => {
             if (err) {
                 reject(err)
             } else {
-                const result = rows.map((item) => new Footballer(item.name, item.age, item.leagues,
-                    item.teams, item.nationality, item.position, item.career, item.foot))
+                const result = rows.map((item) => new Footballer(item.Name, item.Age, item.Leagues,
+                    item.Teams, item.Nationality, item.Position, item.Career, item.Foot))
 
                 resolve(result)
             }
@@ -198,8 +198,8 @@ export const findCareer = (career) => {
             if (err) {
                 reject(err)
             } else {
-                const result = rows.map((item) => new Footballer(item.name, item.age, item.leagues,
-                    item.teams, item.nationality, item.position, item.career, item.foot))
+                const result = rows.map((item) => new Footballer(item.Name, item.Age, item.Leagues,
+                    item.Teams, item.Nationality, item.Position, item.Career, item.Foot))
 
                 resolve(result)
             }
@@ -221,8 +221,8 @@ export const findFoot = (foot) => {
             if (err) {
                 reject(err)
             } else {
-                const result = rows.map((item) => new Footballer(item.name, item.age, item.leagues,
-                    item.teams, item.nationality, item.position, item.career, item.foot))
+                const result = rows.map((item) => new Footballer(item.Name, item.Age, item.Leagues,
+                    item.Teams, item.Nationality, item.Position, item.Career, item.Foot))
 
                 resolve(result)
             }
@@ -290,3 +290,6 @@ export const updateFootballer = (name, age, leagues, teams, nationality, positio
         })
     })
 }
+
+// test
+//findTeams("AC Milan").then(result => console.log(result))

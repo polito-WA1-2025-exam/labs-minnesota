@@ -6,11 +6,11 @@ GET http://localhost:3000/footballers
 
 ###
 
-GET http://localhost:3000/footballers/properties/:id
+GET http://localhost:3000/footballers/properties/3
 
 ###
 
-GET http://localhost:3000/footballers/properties/:name
+GET http://localhost:3000/footballers/properties/Cristiano
 
 ###
 
@@ -44,4 +44,4 @@ GET http://localhost:3000/footballers/properties/position
 POST http://localhost:3000/footballers/create
 Content-Type: application/json
 
-{"name": "Federico Gatti", "age": }
+{"Name": "Federico Gatti", "Age": 25, "Leagues": ["Serie A"], "Teams": ["Juventus"], "Nationality": "Italy", "Career": 1, "Foot": "Right", "Position": "DEF"}
