@@ -236,12 +236,15 @@ export const findFoot = (foot) => {
 // add
 export const addFootballer = (name, age, leagues, teams, nationality, position, career, foot) => {
     return new Promise((resolve, reject) => {
-        
+
+        let leaguesString = JSON.stringify(leagues)
+        let teamsString = JSON.stringify(teams)
+
         const sql =
             `INSERT INTO footballers (Name, Age, Leagues, Teams, Nationality, Position, Career, Foot)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)`
         
-        const params  = [name, age, leagues, teams, nationality, position, career, foot]
+        const params  = [name, age, leaguesString, teamsString, nationality, position, career, foot]
 
         db.run(sql, params, (err) => {
             if (err) {
@@ -254,13 +257,13 @@ export const addFootballer = (name, age, leagues, teams, nationality, position, 
 }
 
 // delete
-export const deleteFootballer = (name) => {
+export const deleteFootballer = (id) => {
     return new Promise((resolve, reject) => {
 
         const sql =
             `DELETE FROM footballers
-            WHERE Name = ?`
-            db.run(sql, [name], (err) => {
+            WHERE Id = ?`
+            db.run(sql, [id], (err) => {
             if (err) {
                 reject(err)
             } else {

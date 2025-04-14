@@ -44,55 +44,58 @@ app.get('/footballers/properties/:id', validateId, (req, res) => {
 })
 
 // find by name
-app.get('/footballers/properties/name', validateString("Name"), (req, res) => {
+app.get('/footballers/properties/name/:name', validateString("name"), (req, res) => {
     findName(req.params.name).then(result => res.json(result))
 })
 
 // find by age
-app.get('/footballers/properties/age', validateString("Age"), (req, res) => {
+app.get('/footballers/properties/age/:age', validateString("age"), (req, res) => {
     findAge(req.params.age).then((result) => {res.json(result)})
 })
 
 // find by leagues
-app.get('/footballers/properties/league', validateString("League"), (req, res) => {
+app.get('/footballers/properties/leagues/:league', validateString("league"), (req, res) => {
     findLeagues(req.params.league).then((result) => {res.json(result)})
 })
 
 // find by team
-app.get('/footballers/properties/team', validateString("Team"),(req, res) => {
+app.get('/footballers/properties/teams/:team', validateString("team"),(req, res) => {
     findTeams(req.params.team).then((result) => {res.json(result)})
 })
 
 // find by nationality
-app.get('/footballers/properties/nationality', validateString("Nationality"),(req, res) => {
+app.get('/footballers/properties/nationality/:nationality', validateString("nationality"),(req, res) => {
     findNationality(req.params.nationality).then((result) => {res.json(result)})
 })
 
 // find by career
-app.get('/footballers/properties/career', validateString("Career"),(req, res) => {
+app.get('/footballers/properties/career/:career', validateString("nareer"),(req, res) => {
     findCareer(req.params.career).then((result) => {res.json(result)})
 })
 
 // find by foot
-app.get('/footballers/properties/foot', validateString("Foot"),(req, res) => {
+app.get('/footballers/properties/foot/:foot', validateString("foot"),(req, res) => {
     findFoot(req.params.foot).then((result) => {res.json(result)})
 })
 
 // find by position
-app.get('/footballers/properties/position', validateString("Position"), (req, res) => {
+app.get('/footballers/properties/position/:position', validateString("position"), (req, res) => {
     findPosition(req.params.position).then((result) => {res.json(result)})
 })
 
 // CRUD METHODS 
 
-app.post('/footballers/create', (req, res) => {
+// add a new footballer
+app.post('/footballers', (req, res) => {
     addFootballer(req.body.name, req.body.age, req.body.leagues, req.body.teams, req.body.nationality, req.body.position, req.body.career, req.body.foot).then(() => res.sendStatus(200))
 })
 
-app.put('/footballers/update', (req, res) => {
+// update footballer given his ID
+app.put('/footballers/:id', (req, res) => {
     updateFootballer(req.body.name, req.body.age, req.body.leagues, req.body.teams, req.body.nationality, req.body.position, req.body.career, req.body.foot).then(() => res.sendStatus(200))
 })
 
-app.delete('/footballers/delete', (req, res) => {
-    deleteFootballer(req.body.name).then(() => res.sendStatus(200))
+// delete footballer given his ID
+app.delete('/footballers/:id', (req, res) => {
+    deleteFootballer(req.params.id).then(() => res.sendStatus(200))
 })

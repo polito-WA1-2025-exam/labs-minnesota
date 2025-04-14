@@ -6,7 +6,7 @@ GET http://localhost:3000/footballers
 
 ###
 
-GET http://localhost:3000/footballers/properties/3
+GET http://localhost:3000/footballers/properties/name/CristianoRonaldo
 
 ###
 
@@ -14,11 +14,11 @@ GET http://localhost:3000/footballers/properties/Cristiano
 
 ###
 
-GET http://localhost:3000/footballers/properties/age
+GET http://localhost:3000/footballers/properties/age/53
 
 ###
 
-GET http://localhost:3000/footballers/properties/league
+GET http://localhost:3000/footballers/properties/leagues/Serie%20A
 
 ###
 
@@ -41,7 +41,11 @@ GET http://localhost:3000/footballers/properties/position
 
 ###
 
-POST http://localhost:3000/footballers/create
+POST http://localhost:3000/footballers
 Content-Type: application/json
 
-{"Name": "Federico Gatti", "Age": 25, "Leagues": ["Serie A"], "Teams": ["Juventus"], "Nationality": "Italy", "Career": 1, "Foot": "Right", "Position": "DEF"}
+{"name": "Federico Gatti", "age": 25, "leagues": ["Serie A"], "teams": ["Juventus"], "nationality": "Italy", "career": 1, "foot": "Right", "position": "DEF"}
+
+###
+
+DELETE http://localhost:3000/footballers/10
