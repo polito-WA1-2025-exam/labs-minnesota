@@ -37,3 +37,5 @@ EDIT(21/03): exercise 3 done, created copy of the database for the testing
   EDIT(28/03/2025): exercises 1-2 done, remaining exercise 3
 
   EDIT(14/04/2025): Lab_03 completed
+
+- Lab_04(09/05/2025): lab 04 done (very basic, needs to be extended very much)
