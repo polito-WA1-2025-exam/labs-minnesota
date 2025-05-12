@@ -38,4 +38,5 @@ EDIT(21/03): exercise 3 done, created copy of the database for the testing
 
   EDIT(14/04/2025): Lab_03 completed
 
-- Lab_04(09/05/2025): lab 04 done (very basic, needs to be extended very much)
+- Lab_04(09/05/2025): lab 04 done (very basic)
+- Lab_05(12/05/2025): done, in the demo folder (needs npm install)
